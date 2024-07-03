@@ -1,38 +1,239 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.ele:hover {
+    background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ele:hover .child {
+    color: black
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.table-text {
+    letter-spacing: .08vh;
+    text-transform: uppercase;
+    font-family: Rajdhani, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-.App-link {
-  color: #61dafb;
+.card-text {
+    letter-spacing: .1vh;
+    text-transform: uppercase;
+    margin-top: 2vh;
+    margin-right: 2vh;
+    font-family: Rajdhani, sans-serif;
+    font-size: 1.6vh;
+    font-weight: 700;
+    line-height: 2vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.custom-button {
+    width: 28vh;
+    height: 4.8vh;
+    border: 1px solid rgba(255, 255, 255, .2);
+    justify-content: center;
+    align-items: center;
+    margin-right: 1vh;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+}
+
+.custom-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.rajdhani-heading {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: xx-large;
+}
+
+.rajdhani-sub-heading {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: x-large;
+}
+
+.rajdhani-text {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: small;
+}
+
+
+.body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.bgImageBox {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    /* overflow: hidden; */
+    z-index: -1;
+    opacity: 0.95;
+    background: #000C13;
+}
+
+.bgImage {
+    filter: blur(10px);
+    filter: brightness(30%);
+}
+
+.mainScreen {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.leftScreen {
+    height: 100%;
+    width: 60px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rightScreen {
+    height: 100%;
+    width: 60px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.centerScreen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.topScreen {
+    height: 60px;
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .leftScreen,
+    .rightScreen {
+        display: none;
+    }
+}
+
+/* General Layout */
+.page {
+    display: flex;
+}
+
+.col1 {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    padding: 10px;
+}
+
+.col2 {
+    width: 80%;
+    padding: 10px;
+}
+
+/* Rows */
+.row1,
+.row2 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* Point List and Scores */
+.pointList {
+    width: 40%;
+    margin-right: 20px;
+}
+
+.scores {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Brand Logo and Cookie Info */
+.brandLogo {
+    margin-right: 10px;
+}
+
+.cookieInfoBox {
+    display: flex;
+}
+
+.levelProgress {
+    border: 1px solid white;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+
+.rankBox {
+    word-wrap: break-word;
+}
+
+/* Highlights */
+.highlightsBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .col1 {
+        width: 30%;
+    }
+
+    .col2 {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .col1,
+    .col2 {
+        width: 100%;
+    }
+
+    .row2 {
+        flex-direction: column;
+    }
+
+    .pointList,
+    .scores {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
