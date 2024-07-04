@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import './index.css'
 
@@ -64,23 +65,42 @@ const maps = [
 ];
 
 function App() {
+  const [scrollPercent, setScrollPercent] = useState(0);
+
+  const updateScrollPercent = () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = window.innerHeight;
+    const scrollTopPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+    setScrollPercent(scrollTopPercent);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateScrollPercent);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollPercent);
+    };
+  }, []);
+
   return (
-    <div className="body rajdhani-regular-heading map-container">
-      <div className="bgImageBox">
+    <div className="body  rajdhani-regular-heading map-container " >
+      <div className="bgImageBox ">
         <img
           alt="Authorization Background"
           src={menu_background}
           className="bgImage "
         />
       </div>
-      <main className="mainScreen">
+
+      <main className="mainScreen ">
 
         {/* left div */}
-        <div className="leftScreen">
+        <div className="leftScreen ">
           left nav
         </div>
 
-        <div className="centerScreen custom-cursor">
+        <div className="centerScreen  ">
 
           <div className="topScreen">
             <Navbar />
@@ -103,9 +123,9 @@ function App() {
             -
             60
             HZ <br />
-            Server protected by The_K-50 AntiCheat. Vip !Rules, Questions, Request, Appeal, Visit us: www.epg.gg | Discord https://discord.gg/3r5NK4d</p>
+            Server protected by The_K-50 AntiCheat. Vip !Rules, Questions, Request, Appeal, Visit us: www.epg.gg | Discord <br /> https://discord.gg/3r5NK4d</p>
 
-          <div className='flex flex-row'>
+          <div className='flex flex-row rajdhani-text'>
             <button class="custom-button">JOIN</button>
             <button class="custom-button">SPECTATE</button>
             <button class="custom-button">JOIN AS COMMANDER</button>
@@ -113,19 +133,23 @@ function App() {
           </div>
 
           <div className=" flex ">
-            <div className="flex justify-center space-x-8 text-white mr-5 my-5">
-              <div className="text-center">
+            <div className="flex justify-center space-x-8 text-white mr-10 my-5 font-semibold ">
+
+              <div className="text-center  pr-14">
                 <div className="text-xs">PLAYERS</div>
                 <div className="text-base ">60/64</div>
               </div>
-              <div className="text-center">
+
+              <div className="text-center mr-10 pr-14">
                 <div className="text-xs">PING</div>
                 <div className="text-base">104ms</div>
               </div>
-              <div className="text-center">
+
+              <div className="text-center mr-10 pr-10">
                 <div className="text-xs">TICKRATE</div>
                 <div className="text-base">60 Hz</div>
               </div>
+
             </div>
           </div>
 
@@ -134,31 +158,34 @@ function App() {
           <div className=" text-white flex ">
             <div className="flex space-x-16">
               <div>
-                <h2 className="text-xs mb-4">SETTINGS</h2>
+                <h2 className="text-xs mb-4 font-semibold rajdhani-text">SETTINGS</h2>
                 <ul>
                   {settings.map((item, index) => (
-                    <li key={index} className="mb-2 ele">
-                      <span className="text-sm child">{item.label}</span>: <span className="table-text child">{item.value}</span>
+                    <li key={index} className="mb-2 ele line flex justify-between ">
+                      <span className="text-sm child mr-10">{item.label}</span>
+                      <span className="table-text child ">{item.value}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h2 className="text-xs mb-4">ADVANCED</h2>
+                <h2 className="text-xs mb-4 font-semibold rajdhani-text">ADVANCED</h2>
                 <ul>
                   {advanced.map((item, index) => (
-                    <li key={index} className="mb-2 ele">
-                      <span className="text-sm child">{item.label}</span>: <span className="table-text child">{item.value}</span>
+                    <li key={index} className="mb-2 ele line flex justify-between">
+                      <span className="text-sm child mr-10">{item.label}</span>
+                      <span className="table-text child ">{item.value}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h2 className="text-xs  mb-4">RULES</h2>
+                <h2 className="text-xs  mb-4 font-semibold rajdhani-text">RULES</h2>
                 <ul>
                   {rules.map((item, index) => (
-                    <li key={index} className="mb-2 ele">
-                      <span className="text-sm child">{item.label}</span>: <span className="table-text child">{item.value}</span>
+                    <li key={index} className="mb-2 ele line flex justify-between">
+                      <span className="text-sm child mr-10">{item.label}</span>
+                      <span className="table-text child ">{item.value}</span>
                     </li>
                   ))}
                 </ul>
@@ -172,15 +199,15 @@ function App() {
 
             <div className="grid grid-cols-4 gap-4">
               {maps.map((map, index) => (
-                <div key={index} className="relative">
+                <div key={index} className="relative ">
                   <img
                     src={map.image}
                     alt={map.name}
                     className="w-full h-40 object-cover"
                   />
 
-                  <div className="card">
-                    <span className="card-text">{map.name}</span>
+                  <div className="card card-text w-full">
+                    {map.name}
                   </div>
 
                 </div>
@@ -190,6 +217,7 @@ function App() {
 
           {/* Till Here */}
         </div>
+        <div className="scroll-indicator" style={{ height: `${scrollPercent}%` }}></div> {/* Vertical Scroll Indicator */}
 
         {/* right div */}
         <div className="rightScreen">
