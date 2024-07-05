@@ -13,6 +13,7 @@ import three from "./assets/images/three.png"
 import four from "./assets/images/four.png"
 import five from "./assets/images/five.png"
 
+// data
 const settings = [
   { label: 'REGION', value: 'EUROPE - DE' },
   { label: 'PUNKBUSTER', value: 'ON' },
@@ -67,6 +68,7 @@ const maps = [
 function App() {
   const [scrollPercent, setScrollPercent] = useState(0);
 
+  // logic to update the scroll Percentage
   const updateScrollPercent = () => {
     const scrollTop = window.scrollY;
     const scrollHeight = document.documentElement.scrollHeight;
@@ -78,13 +80,15 @@ function App() {
   useEffect(() => {
     window.addEventListener('scroll', updateScrollPercent);
 
+    // this is basically the cleanup function
     return () => {
       window.removeEventListener('scroll', updateScrollPercent);
     };
   }, []);
 
   return (
-    <div className="body  rajdhani-regular-heading map-container " >
+    <div className="body rajdhani-regular-heading map-container " >
+      {/* for the background image */}
       <div className="bgImageBox ">
         <img
           alt="Authorization Background"
@@ -93,7 +97,7 @@ function App() {
         />
       </div>
 
-      <main className="mainScreen ">
+      <main className="mainScreen">
 
         {/* left div */}
         <div className="leftScreen ">
@@ -106,11 +110,8 @@ function App() {
             <Navbar />
           </div>
 
-          {/* main code here */}
-          <h1 className='rajdhani-heading'>SERVER INFO</h1>
-
-          <br />
-          <br />
+          {/* main center screen kaa code */}
+          <h1 className='rajdhani-heading'>SERVER INFO</h1> <br /><br />
 
           <h2 className='rajdhani-sub-heading'>! RC3-BASEMAPS</h2 >
 
@@ -123,8 +124,10 @@ function App() {
             -
             60
             HZ <br />
-            Server protected by The_K-50 AntiCheat. Vip !Rules, Questions, Request, Appeal, Visit us: www.epg.gg | Discord <br /> https://discord.gg/3r5NK4d</p>
+            Server protected by The_K-50 AntiCheat. Vip !Rules, Questions, Request, Appeal, Visit us: www.epg.gg | Discord <br /> https://discord.gg/3r5NK4d
+          </p>
 
+          {/* buttons */}
           <div className='flex flex-row rajdhani-text'>
             <button class="custom-button">JOIN</button>
             <button class="custom-button">SPECTATE</button>
@@ -157,6 +160,7 @@ function App() {
           {/* table kaa code */}
           <div className=" text-white flex ">
             <div className="flex space-x-16">
+
               <div>
                 <h2 className="text-xs mb-4 font-semibold rajdhani-text">SETTINGS</h2>
                 <ul>
@@ -168,6 +172,7 @@ function App() {
                   ))}
                 </ul>
               </div>
+
               <div>
                 <h2 className="text-xs mb-4 font-semibold rajdhani-text">ADVANCED</h2>
                 <ul>
@@ -179,6 +184,7 @@ function App() {
                   ))}
                 </ul>
               </div>
+
               <div>
                 <h2 className="text-xs  mb-4 font-semibold rajdhani-text">RULES</h2>
                 <ul>
@@ -190,6 +196,7 @@ function App() {
                   ))}
                 </ul>
               </div>
+
             </div>
           </div>
 
@@ -213,10 +220,12 @@ function App() {
                 </div>
               ))}
             </div>
+
           </div>
 
-          {/* Till Here */}
+          {/* Till Here code for center screen */}
         </div>
+
         <div className="scroll-indicator" style={{ height: `${scrollPercent}%` }}></div> {/* Vertical Scroll Indicator */}
 
         {/* right div */}
@@ -225,6 +234,7 @@ function App() {
         </div>
 
       </main >
+
     </div >
   );
 }

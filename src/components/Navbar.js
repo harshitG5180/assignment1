@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/navbar.css';
 import Brand from './Brand';
+
+// icons
 import BarIcon from '../assets/icons/BarIcon';
 import CloseIcon from '../assets/icons/CloseIcon';
 
@@ -16,6 +18,7 @@ const Navbar = () => {
         setIsOverlayOpen(false);
     }
 
+    // Simple nav links
     const pages = [
         { path: '/', label: 'Home' },
         { path: '/multiplayer', label: 'Multiplayer' },
